@@ -14,23 +14,19 @@ class Bureaucrat
         Bureaucrat(const Bureaucrat& other);
         const Bureaucrat& operator=(const Bureaucrat& other);
         ~Bureaucrat();
-        std::string getName(void);
-        int getGrade(void);
+        const std::string getName(void) const;
+        int getGrade(void) const;
         void incrementGrade(int value);
         void decrementGrade(int value);
         class GradeTooHighException: public std::exception {
             public:
-                GradeTooHighException();
-                ~GradeTooHighException();
-                const char* what(void);
+                const char* what() const throw();
         };
         class GradeTooLowException: public std::exception {
             public:
-                GradeTooLowException();
-                ~GradeTooLowException();
-                const char* what(void);
+                const char* what() const throw();
         };
 };
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);
+std::ostream& operator<<(std::ostream& os, Bureaucrat& obj);
 
 #endif

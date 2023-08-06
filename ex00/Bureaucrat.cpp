@@ -1,10 +1,5 @@
 #include "Bureaucrat.h"
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj) {
-    os << obj;
-    return os;
-}
-
 Bureaucrat::Bureaucrat(): _name("undefined"), _grade(150) {
     std::cout << "Default Constructor Called" << std::endl;
 }
@@ -28,10 +23,10 @@ const Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
     return (*this);
 }
 
-std::string Bureaucrat::getName() {
+const std::string Bureaucrat::getName() const {
     return this->_name;
 }
-int Bureaucrat::getGrade() {
+int Bureaucrat::getGrade() const {
     return this->_grade;
 }
 
@@ -46,19 +41,18 @@ void Bureaucrat::decrementGrade(int value) {
     _grade = getGrade() + value;
 }
 
-Bureaucrat::GradeTooHighException::GradeTooHighException() {}
-Bureaucrat::GradeTooHighException::~GradeTooHighException() {}
-
-Bureaucrat::GradeTooLowException::GradeTooLowException() {}
-Bureaucrat::GradeTooLowException::~GradeTooLowException() {}
-
-const char *Bureaucrat::GradeTooHighException::what() {
+const char *Bureaucrat::GradeTooHighException::what() const throw(){
     return "Error: GradeTooHighException";
 }
-const char *Bureaucrat::GradeTooLowException::what() {
+const char *Bureaucrat::GradeTooLowException::what() const throw(){
     return "Error: GradeTooLowException";
 }
 
 Bureaucrat::~Bureaucrat() {
     std::cout << "Bureaucrat " << this->getName() << " with Grade of "<< this->getGrade()<< " deconstructed" << std::endl;
+}
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj) {
+    os << obj.getName() << " bureaucrat grad" << obj.getGrade() << std::endl;
+    return os;
 }
