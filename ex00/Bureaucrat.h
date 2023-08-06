@@ -16,8 +16,8 @@ class Bureaucrat
         ~Bureaucrat();
         const std::string getName(void) const;
         int getGrade(void) const;
-        void incrementGrade(int value);
-        void decrementGrade(int value);
+        void incrementGrade(void);
+        void decrementGrade(void);
         class GradeTooHighException: public std::exception {
             public:
                 const char* what() const throw();
@@ -27,6 +27,7 @@ class Bureaucrat
                 const char* what() const throw();
         };
 };
-std::ostream& operator<<(std::ostream& os, Bureaucrat& obj);
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);
 
 #endif
