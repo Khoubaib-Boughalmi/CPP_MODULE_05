@@ -47,6 +47,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & bureaucrat) const {
     std::ofstream outFile(_fName, std::ios::out);
     if(!outFile)
         throw OpenFileException();
+    check_permissions(bureaucrat);
     outFile << _tree;
     std::cout << "Shrubbery Created Successfully" << std::endl;
 }
