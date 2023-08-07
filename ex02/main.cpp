@@ -5,7 +5,7 @@
 int	main(void)
 {
 	try {
-		Bureaucrat	bureaucrat1("snape", 1);
+		Bureaucrat	bureaucrat1("snape", 149);
 		ShrubberyCreationForm shrubbery("Forest");
 		shrubbery.execute(bureaucrat1);
 	}

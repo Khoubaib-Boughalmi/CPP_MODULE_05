@@ -20,6 +20,15 @@ const ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCre
 std::string ShrubberyCreationForm::getTarget() const{
     return this->_target;   
 }
+
+int ShrubberyCreationForm::check_permissions(const Bureaucrat& bureaucrat) const{
+    if(bureaucrat.getGrade() <= this->getReqSignGrade())
+        return (1);
+    else
+        throw GradeTooLowException();
+}
+
+
 // "          _-_           __________________                           _-_           "
 // "        /~~   ~~\\      < srsly dude, why? >                      /~~   ~~\\       "
 // "    /~~         ~~\\     ------------------                    /~~         ~~\\    "
@@ -43,11 +52,19 @@ void ShrubberyCreationForm::execute(Bureaucrat const & bureaucrat) const {
                        "          // \\                                                     // \\         \n";
 
 
-    std::string _fName = this->_target + "_shrubbery";
-    std::ofstream outFile(_fName, std::ios::out);
-    if(!outFile)
-        throw OpenFileException();
-    check_permissions(bureaucrat);
-    outFile << _tree;
-    std::cout << "Shrubbery Created Successfully" << std::endl;
+    try
+    {
+        this->check_permissions(bureaucrat);
+        std::string _fName = this->_target + "_shrubbery";
+        std::ofstream outFile(_fName.c_str(), std::ios::out);
+        if(!outFile)
+            throw OpenFileException();
+        outFile << _tree;
+        std::cout << "Shrubbery Created Successfully" << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
 }
