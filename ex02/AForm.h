@@ -2,6 +2,7 @@
 #define AFORM_H
 
 #include "Bureaucrat.h"
+#include <fstream>
 
 class Bureaucrat;
 
@@ -11,6 +12,18 @@ class AForm{
         bool                _signed;
         int const           _reqSignGrade;
         int const           _reqExecuteGrade;
+    public:
+        AForm();
+        AForm(std::string name, const int reqSignGrade, const int reqExecuteGrade);
+        AForm(const AForm& other);
+        const AForm& operator=(const AForm& other);
+        virtual ~AForm();
+        const std::string getName(void) const;
+        bool getSigned(void) const;
+        int getReqSignGrade(void) const;
+        int getReqExecuteGrade(void) const; 
+        void beSigned(const Bureaucrat &bureaucrat);
+        virtual void execute(Bureaucrat const & executor) const = 0;
         class GradeTooHighException: public std::exception {
             public:
                 const char* what() const throw();
@@ -23,25 +36,10 @@ class AForm{
             public:
                 const char* what() const throw();
         };
-        // class OpenFileException: public std::exception {
-        //     public:
-        //         const char* what() const throw();
-        // };
-        // class CreateFileException: public std::exception {
-        //     public:
-        //         const char* what() const throw();
-        // };
-    public:
-        AForm();
-        AForm(std::string name, const int reqSignGrade, const int reqExecuteGrade);
-        AForm(const AForm& other);
-        const AForm& operator=(const AForm& other);
-        virtual ~AForm();
-        const std::string getName(void) const;
-        bool getSigned(void) const;
-        int getReqSignGrade(void) const;
-        int getReqExecuteGrade(void) const; 
-        void beSigned(const Bureaucrat &bureaucrat);
+        class OpenFileException: public std::exception {
+            public:
+                const char* what() const throw();
+        };
 };
 
 std::ostream& operator<<(std::ostream &os, const AForm& obj);
