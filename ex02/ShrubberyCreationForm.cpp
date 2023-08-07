@@ -13,23 +13,35 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
 AForm(other.getTarget(), other.SignGrade, other.ExecuteGrade),_target(other._target){}
 
 const ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other) {
+    (void) other;
     return (*this);
 }
 
 std::string ShrubberyCreationForm::getTarget() const{
     return this->_target;   
 }
+// "          _-_           __________________                           _-_           "
+// "        /~~   ~~\\      < srsly dude, why? >                      /~~   ~~\\       "
+// "    /~~         ~~\\     ------------------                    /~~         ~~\\    "
+// "    {               }          \\      ^__^                    {               }   "
+// "    \\  _-     -_  /             \\   (oo)\\_______           \\  _-     -_  /     "
+// "   \\  ~  \\ //  ~                    (__)\\       )\\/        \\  ~ \\ //  ~      "
+// "    _- -   | | _- _                        ||----w |          _- -   | | _- _      "
+// "      _ -  | |   -_                        ||     ||            _ -  | |   -_      "
+// "          // \\                                                     // \\          "
 
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
-    std::string _tree = "          _-_          "
-                        "        /~~   ~~\      "
-                        "    /~~         ~~\    "
-                        "    {               }  "
-                        "    \  _-     -_  /    "
-                        "    ~  \\ //  ~        "
-                        "    _- -   | | _- _    "
-                        "    _ -  | |   -_      "
-                        "        // \\          ";
+void ShrubberyCreationForm::execute(Bureaucrat const & bureaucrat) const {
+    (void) bureaucrat;
+    std::string _tree ="          _-_           __________________                           _-_          \n"
+                       "        /~~   ~~\\      < srsly dude, why? >                      /~~   ~~\\      \n"
+                       "    /~~         ~~\\     ------------------                    /~~         ~~\\   \n"
+                       "    {               }          \\      ^__^                    {               }  \n"
+                       "    \\  _-     -_  /             \\   (oo)\\_______           \\  _-     -_  /    \n"
+                       "   \\  ~  \\ //  ~                    (__)\\       )\\/        \\  ~ \\ //  ~     \n"
+                       "    _- -   | | _- _                        ||----w |          _- -   | | _- _     \n"
+                       "      _ -  | |   -_                        ||     ||            _ -  | |   -_     \n"
+                       "          // \\                                                     // \\         \n";
+
 
     std::string _fName = this->_target + "_shrubbery";
     std::ofstream outFile(_fName, std::ios::out);

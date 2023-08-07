@@ -4,7 +4,8 @@ CFLAGS= -std=c++98 -Wall -Wextra -Werror
 
 SRCS =	main.cpp \
 		Bureaucrat.cpp \
-		AForm.cpp
+		AForm.cpp \
+		ShrubberyCreationForm.cpp \
 
 %.o:%.cpp
 	${CC} ${CFLAGS} -c $^ -o $@

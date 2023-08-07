@@ -13,6 +13,8 @@ class ShrubberyCreationForm : public AForm
 
     private :   
         const std::string   _target;
-        int const SignGrade = 145;
-        int const ExecuteGrade = 13;
+        typedef enum s_req {
+            SignGrade = 145,
+            ExecuteGrade = 13
+        } t_req;
 };
