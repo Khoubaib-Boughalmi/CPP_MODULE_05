@@ -1,9 +1,10 @@
-NAME=EX00
+NAME=EX01
 CC= c++
 CFLAGS= -std=c++98 -Wall -Wextra -Werror
 
 SRCS =	main.cpp \
-		Bureaucrat.cpp
+		Bureaucrat.cpp \
+		Form.cpp
 
 %.o:%.cpp
 	${CC} ${CFLAGS} -c $^ -o $@

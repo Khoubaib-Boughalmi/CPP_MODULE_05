@@ -1,6 +1,6 @@
 #include "Bureaucrat.h"
 
-Bureaucrat::Bureaucrat(): _name("undefined"), _grade(150) {}
+Bureaucrat::Bureaucrat(): _name("Default"), _grade(150) {}
 Bureaucrat::Bureaucrat(const std::string name, const int grade): _name(name) {
     if (grade < 1)
         throw GradeTooHighException();
@@ -41,6 +41,18 @@ const char *Bureaucrat::GradeTooHighException::what() const throw(){
 }
 const char *Bureaucrat::GradeTooLowException::what() const throw(){
     return "Error: GradeTooLowException";
+}
+
+void Bureaucrat::signForm(Form &form) {
+    try
+    {
+        form.beSigned(*this);
+        std::cout << this->getName() << " signed " << form.getName() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+    }
 }
 
 Bureaucrat::~Bureaucrat() {}

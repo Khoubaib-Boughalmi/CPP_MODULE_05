@@ -1,3 +1,6 @@
+#ifndef FORM_H
+#define FORM_H
+
 #include "Bureaucrat.h"
 
 class Bureaucrat;
@@ -6,8 +9,20 @@ class Form{
     private:
         const std::string   _name;
         bool                _signed;
-        const int           _reqSignGrade;
-        const int           _reqExecuteGrade;
+        int const           _reqSignGrade;
+        int const           _reqExecuteGrade;
+        class GradeTooHighException: public std::exception {
+            public:
+                const char* what() const throw();
+        };
+        class GradeTooLowException: public std::exception {
+            public:
+                const char* what() const throw();
+        };
+        class FormAlreadySignedException: public std::exception {
+            public:
+                const char* what() const throw();
+        };
     public:
         Form();
         Form(std::string name, const int reqSignGrade, const int reqExecuteGrade);
@@ -16,10 +31,11 @@ class Form{
         ~Form();
         const std::string getName(void) const;
         bool getSigned(void) const;
-        const int getReqSignGrade(void) const;
-        const int getReqExecuteGrade(void) const;
-        void beSigned(Bureaucrat &bureaucrat);
+        int getReqSignGrade(void) const;
+        int getReqExecuteGrade(void) const;
+        void beSigned(const Bureaucrat &bureaucrat);
 };
 
 std::ostream& operator<<(std::ostream &os, const Form& obj);
 
+#endif

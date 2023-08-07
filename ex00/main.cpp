@@ -3,28 +3,28 @@
 int main()
 {
     try {
-		Bureaucrat	man1("bob", 3);
+		Bureaucrat	bureacrat1("snape", 4);
 
-		man1.incrementGrade();
-		man1.incrementGrade();
-		std::cout << man1 << std::endl;
+		bureacrat1.incrementGrade();
+		bureacrat1.incrementGrade();
+		std::cout << bureacrat1 << std::endl;
 
-		man1.incrementGrade();
-		man1.incrementGrade();
-		std::cout << man1 << std::endl;
+		bureacrat1.incrementGrade();
+		bureacrat1.incrementGrade();
+		std::cout << bureacrat1 << std::endl;
 	}
 	catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 
 	try {
-		Bureaucrat	man2("jim", 149);
+		Bureaucrat	bureaucrat1("john doe", 149);
 
-		man2.decrementGrade();
-		std::cout << man2 << std::endl;
+		bureaucrat1.decrementGrade();
+		std::cout << bureaucrat1 << std::endl;
 
-		man2.decrementGrade();
-		std::cout << man2 << std::endl;
+		bureaucrat1.decrementGrade();
+		std::cout << bureaucrat1 << std::endl;
 	}
 	catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
