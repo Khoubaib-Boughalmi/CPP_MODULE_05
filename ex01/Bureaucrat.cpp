@@ -1,7 +1,7 @@
 #include "Bureaucrat.h"
 
 Bureaucrat::Bureaucrat(): _name("undefined"), _grade(150) {}
-Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name) {
+Bureaucrat::Bureaucrat(const std::string name, const int grade): _name(name) {
     if (grade < 1)
         throw GradeTooHighException();
     else if (grade > 150)
