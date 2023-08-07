@@ -29,6 +29,13 @@ const int Form::getReqExecuteGrade() const {
     return this->_reqExecuteGrade;
 }
 
+void Form::beSigned(Bureaucrat &bureaucrat) {}
+// void Form::signForm(void) {
+//     if(this->getSigned())
+//         std::cout << <bureaucrat> signed <form>
+// }
+
+
 std::ostream& operator<<(std::ostream &os, const Form& obj) {
     os << "form :" <<  obj.getName() << "with a " << obj.getReqExecuteGrade() \
     << "Required Execute Grade" << " and a " << obj.getReqSignGrade() \

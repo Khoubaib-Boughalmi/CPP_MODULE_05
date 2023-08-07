@@ -1,7 +1,8 @@
 #include "Bureaucrat.h"
 
-class Form: public Bureaucrat
-{
+class Bureaucrat;
+
+class Form{
     private:
         const std::string   _name;
         bool                _signed;
@@ -17,6 +18,7 @@ class Form: public Bureaucrat
         bool getSigned(void) const;
         const int getReqSignGrade(void) const;
         const int getReqExecuteGrade(void) const;
+        void beSigned(Bureaucrat &bureaucrat);
 };
 
 std::ostream& operator<<(std::ostream &os, const Form& obj);
