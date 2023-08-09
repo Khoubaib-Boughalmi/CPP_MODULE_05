@@ -9,7 +9,6 @@ class ShrubberyCreationForm : public AForm
         const ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
         ~ShrubberyCreationForm();
         std::string getTarget() const;
-        int check_permissions(Bureaucrat const & executor) const;
         void execute(Bureaucrat const & executor) const;
 
     private :   

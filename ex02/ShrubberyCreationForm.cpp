@@ -21,14 +21,6 @@ std::string ShrubberyCreationForm::getTarget() const{
     return this->_target;   
 }
 
-int ShrubberyCreationForm::check_permissions(const Bureaucrat& bureaucrat) const{
-    if(bureaucrat.getGrade() <= this->getReqSignGrade())
-        return (1);
-    else
-        throw GradeTooLowException();
-}
-
-
 // "          _-_           __________________                           _-_           "
 // "        /~~   ~~\\      < srsly dude, why? >                      /~~   ~~\\       "
 // "    /~~         ~~\\     ------------------                    /~~         ~~\\    "
@@ -51,10 +43,9 @@ void ShrubberyCreationForm::execute(Bureaucrat const & bureaucrat) const {
                        "      _ -  | |   -_                        ||     ||            _ -  | |   -_     \n"
                        "          // \\                                                     // \\         \n";
 
-
     try
     {
-        this->check_permissions(bureaucrat);
+        check_permissions(bureaucrat);
         std::string _fName = this->_target + "_shrubbery";
         std::ofstream outFile(_fName.c_str(), std::ios::out);
         if(!outFile)

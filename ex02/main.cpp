@@ -5,8 +5,9 @@
 int	main(void)
 {
 	try {
-		Bureaucrat	bureaucrat1("snape", 149);
+		Bureaucrat	bureaucrat1("snape", 144);
 		ShrubberyCreationForm shrubbery("Forest");
+		bureaucrat1.signForm(shrubbery);
 		shrubbery.execute(bureaucrat1);
 	}
 	catch (std::exception& e) {

@@ -42,8 +42,19 @@ const char *AForm::GradeTooLowException::what() const throw(){
 const char *AForm::FormAlreadySignedException::what() const throw(){
     return "Error: AFormAlreadySignedException";
 }
+const char *AForm::FormNotSignedException::what() const throw(){
+    return "Error: AFormNotSignedException";
+}
 const char *AForm::OpenFileException::what() const throw(){
     return "Error: OpenFileException";
+}
+
+int AForm::check_permissions(const Bureaucrat& bureaucrat) const{
+    if(bureaucrat.getGrade() > this->getReqSignGrade())
+        throw GradeTooLowException();
+    if(!this->getSigned())
+        throw FormNotSignedException();
+    return (1);
 }
 
 void AForm::beSigned(const Bureaucrat &bureaucrat) {
