@@ -7,6 +7,7 @@ SRCS =	main.cpp \
 		AForm.cpp \
 		ShrubberyCreationForm.cpp \
 		RobotomyRequestForm.cpp \
+		PresidentialPardonForm.cpp \
 
 %.o:%.cpp
 	${CC} ${CFLAGS} -c $^ -o $@
