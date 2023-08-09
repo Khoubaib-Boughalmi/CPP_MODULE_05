@@ -32,7 +32,6 @@ std::string ShrubberyCreationForm::getTarget() const{
 // "          // \\                                                     // \\          "
 
 void ShrubberyCreationForm::execute(Bureaucrat const & bureaucrat) const {
-    (void) bureaucrat;
     std::string _tree ="          _-_           __________________                           _-_          \n"
                        "        /~~   ~~\\      < srsly dude, why? >                      /~~   ~~\\      \n"
                        "    /~~         ~~\\     ------------------                    /~~         ~~\\   \n"

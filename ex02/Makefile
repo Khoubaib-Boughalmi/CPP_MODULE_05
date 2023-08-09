@@ -6,6 +6,7 @@ SRCS =	main.cpp \
 		Bureaucrat.cpp \
 		AForm.cpp \
 		ShrubberyCreationForm.cpp \
+		RobotomyRequestForm.cpp \
 
 %.o:%.cpp
 	${CC} ${CFLAGS} -c $^ -o $@
