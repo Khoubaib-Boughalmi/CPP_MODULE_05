@@ -1,7 +1,6 @@
 #ifndef INTERN_H
 #define INTERN_H
 
-#include <iostream>
 #include "AForm.h"
 #include "ShrubberyCreationForm.h"
 #include "RobotomyRequestForm.h"
@@ -9,16 +8,24 @@
 
 class AForm;
 
-class Inter
+class Intern
 {
     private:
       
     public:
-        Inter();
-        Inter(const std::string name, const int grade);
-        Inter(const Inter& other);
-        const Inter& operator=(const Inter& other);
-        virtual ~Inter();
+        Intern();
+        Intern(const Intern& other);
+        const Intern& operator=(const Intern& other);
+        virtual ~Intern();
+        AForm* makeForm(std::string name, std::string target);
+        class InterDataException: public std::exception {
+            public:
+                const char* what() const throw();
+        };
+        class InterFormCreationException: public std::exception {
+            public:
+                const char* what() const throw();
+        };
        
 };
 
