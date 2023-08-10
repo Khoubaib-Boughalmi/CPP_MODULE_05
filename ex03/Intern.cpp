@@ -54,6 +54,6 @@ AForm* Intern::makeForm(std::string name, std::string target) {
             form = new ShrubberyCreationForm(target);
             break;
     }
-    std::cout << "Intern creates" << form->getName();
+    std::cout << "Intern creates " << form->getName() << std::endl;
     return (form);
 }

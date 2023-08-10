@@ -22,13 +22,6 @@ std::string PresidentialPardonForm::getTarget() const{
 }
 
 void PresidentialPardonForm::execute(Bureaucrat const & bureaucrat) const {
-    try
-    {
         check_permissions(bureaucrat);
         std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
 }

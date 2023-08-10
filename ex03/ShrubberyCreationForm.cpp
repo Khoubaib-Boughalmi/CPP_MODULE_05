@@ -42,19 +42,11 @@ void ShrubberyCreationForm::execute(Bureaucrat const & bureaucrat) const {
                        "      _ -  | |   -_                        ||     ||            _ -  | |   -_     \n"
                        "          // \\                                                     // \\         \n";
 
-    try
-    {
-        check_permissions(bureaucrat);
-        std::string _fName = this->_target + "_shrubbery";
-        std::ofstream outFile(_fName.c_str(), std::ios::out);
-        if(!outFile)
-            throw OpenFileException();
-        outFile << _tree;
-        std::cout << "Shrubbery Created Successfully" << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    
+    check_permissions(bureaucrat);
+    std::string _fName = this->_target + "_shrubbery";
+    std::ofstream outFile(_fName.c_str(), std::ios::out);
+    if(!outFile)
+        throw OpenFileException();
+    outFile << _tree;
+    std::cout << "Shrubbery Created Successfully" << std::endl;
 }
