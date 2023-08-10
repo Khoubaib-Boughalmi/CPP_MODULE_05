@@ -1,8 +1,8 @@
 #include "Form.h"
 
-Form::Form():  _name("Default"),_reqSignGrade(150),_reqExecuteGrade(150){}
+Form::Form(): _name("Default"), _signed(0), _reqSignGrade(150), _reqExecuteGrade(150){}
 
-Form::Form(std::string name, const int reqSignGrade, const int reqExecuteGrade): _name(name), _reqSignGrade(reqSignGrade), _reqExecuteGrade(reqExecuteGrade){
+Form::Form(std::string name, const int reqSignGrade, const int reqExecuteGrade): _name(name), _signed(0), _reqSignGrade(reqSignGrade), _reqExecuteGrade(reqExecuteGrade){
     if(_reqExecuteGrade < 1 || _reqSignGrade < 1)
         throw GradeTooHighException();
     if(_reqExecuteGrade > 150 || _reqSignGrade > 150)
@@ -12,6 +12,7 @@ Form::Form(std::string name, const int reqSignGrade, const int reqExecuteGrade):
 Form::~Form() {}
 
 Form::Form(const Form& other): _name(other.getName()), _reqSignGrade(other.getReqSignGrade()), _reqExecuteGrade(other.getReqExecuteGrade()) {
+    this->_signed = other.getSigned();
     *this = other;
 }
 const Form& Form::operator=(const Form& other) {
