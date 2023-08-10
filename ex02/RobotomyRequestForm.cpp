@@ -22,22 +22,15 @@ std::string RobotomyRequestForm::getTarget() const{
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const & bureaucrat) const {
+    check_permissions(bureaucrat);
+    static bool is_seeded = false;
+    if (!is_seeded) {
+        std::srand(std::time(NULL));
+        is_seeded = true;
+    }
     std::cout << "Making Some Drilling Noises" << std::endl;
-    try
-    {
-        static bool is_seeded = false;
-        if (!is_seeded) {
-            std::srand(static_cast<unsigned int>(std::time(nullptr)));
-            is_seeded = true;
-        }
-        check_permissions(bureaucrat);
-        if(rand() % 2)
-            std::cout <<  this->getTarget() << " Has Been Robotomized Successfully" << std::endl;
-        else
-            std::cout << "Robotomy Failed" << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
+    if(rand() % 2)
+        std::cout <<  this->getTarget() << " Has Been Robotomized Successfully" << std::endl;
+    else
+        std::cout << "Robotomy Failed" << std::endl;
 }
