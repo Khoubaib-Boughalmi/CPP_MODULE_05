@@ -1,8 +1,8 @@
 #include "AForm.h"
 
-AForm::AForm():  _name("Default"),_reqSignGrade(150),_reqExecuteGrade(150){}
+AForm::AForm():  _name("Default"), _signed(0), _reqSignGrade(150),_reqExecuteGrade(150){}
 
-AForm::AForm(std::string name, const int reqSignGrade, const int reqExecuteGrade): _name(name), _reqSignGrade(reqSignGrade), _reqExecuteGrade(reqExecuteGrade){
+AForm::AForm(std::string name, const int reqSignGrade, const int reqExecuteGrade): _name(name), _signed(0), _reqSignGrade(reqSignGrade), _reqExecuteGrade(reqExecuteGrade){
     if(_reqExecuteGrade < 1 || _reqSignGrade < 1)
         throw GradeTooHighException();
     if(_reqExecuteGrade > 150 || _reqSignGrade > 150)
@@ -48,16 +48,23 @@ const char *AForm::FormNotSignedException::what() const throw(){
 const char *AForm::OpenFileException::what() const throw(){
     return "Error: OpenFileException";
 }
+const char *AForm::TargetsDoNotMathchException::what() const throw(){
+    return "Error: TargetsDoNotMathchException";
+}
 
 int AForm::check_permissions(const Bureaucrat& bureaucrat) const{
     if(bureaucrat.getGrade() > this->getReqSignGrade())
         throw GradeTooLowException();
     if(!this->getSigned())
         throw FormNotSignedException();
+    if(bureaucrat.getName() != this->getName())
+        throw TargetsDoNotMathchException();
     return (1);
 }
 
 void AForm::beSigned(const Bureaucrat &bureaucrat) {
+    if(bureaucrat.getName() != this->getName())
+        throw TargetsDoNotMathchException();
     if (bureaucrat.getGrade() <= this->getReqSignGrade() && !this->getSigned())
     {
         this->_signed = 1;        

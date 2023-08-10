@@ -18,7 +18,7 @@ int	main(void)
 	// 		}
 	// }
 	{
-			Bureaucrat bureaucrat1("kais said", 150);
+			Bureaucrat bureaucrat1("kais said", 1);
 			AForm *form;
 			Intern cleverInter;
 			try

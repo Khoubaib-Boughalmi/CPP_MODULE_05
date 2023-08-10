@@ -18,6 +18,9 @@ class Intern
         const Intern& operator=(const Intern& other);
         virtual ~Intern();
         AForm* makeForm(std::string name, std::string target);
+        AForm *PresidentialPardonFormInstantiation(std::string targer);
+        AForm *RobotomyRequestFormInstantiation(std::string targer);
+        AForm *ShrubberyCreationFormInstantiation(std::string targer);
         class InterDataException: public std::exception {
             public:
                 const char* what() const throw();
